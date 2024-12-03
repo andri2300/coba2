@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Partner?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    #yes-btn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    #yes-btn:hover {
+      transform: scale(1.1);
+    }
+
+    #no-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #surprise img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>APAKAH KAMU SAYANG AKU?</h1>
+    <div class="buttons">
+      <button id="yes-btn">IYAA ❤️</button>
+      <button id="no-btn">TIDAK  😢</button>
+    </div>
+    <div id="surprise" class="hidden">
+      <img src="ih.jpeg" alt="Surprise!" />
+      <p>TERIMAKASIH BANYAK SAYANG ❤️</p>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const noBtn = document.getElementById("no-btn");
+      const yesBtn = document.getElementById("yes-btn");
+      const surprise = document.getElementById("surprise");
+
+      // Function to move the "No" button
+      noBtn.addEventListener("mouseover", () => {
+        const container = document.querySelector(".container");
+        const containerWidth = container.offsetWidth;
+        const containerHeight = container.offsetHeight;
+
+        const randomX = Math.random() * (containerWidth - noBtn.offsetWidth);
+        const randomY = Math.random() * (containerHeight - noBtn.offsetHeight);
+
+        noBtn.style.position = "absolute";
+        noBtn.style.left = `${randomX}px`;
+        noBtn.style.top = `${randomY}px`;
+      });
+
+      // Function to handle "Yes" button click
+      yesBtn.addEventListener("click", () => {
+        surprise.classList.remove("hidden");
+      });
+    });
+  </script>
+</body>
+</html>
